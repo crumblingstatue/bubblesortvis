@@ -127,7 +127,8 @@ fn main() {
         "Bubble sort visualization",
         Style::default(),
         &Default::default(),
-    );
+    )
+    .unwrap();
     window.set_vertical_sync_enabled(true);
     let mut sim = Sim::new_randomized();
     let mut pause = true;
@@ -138,13 +139,13 @@ fn main() {
                 Event::Closed => window.close(),
                 Event::Resized { width, height } => {
                     let area = Rect::new(0., 0., width as f32, height as f32);
-                    window.set_view(&View::from_rect(&area));
+                    window.set_view(&View::from_rect(area));
                 }
                 Event::KeyPressed {
-                    code: Key::SPACE, ..
+                    code: Key::Space, ..
                 } => pause ^= true,
                 Event::KeyPressed {
-                    code: Key::RIGHT, ..
+                    code: Key::Right, ..
                 } if pause => sim.advance(),
                 _ => {}
             }
